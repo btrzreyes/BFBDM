@@ -137,26 +137,12 @@ Input the number of your choice:
                     Console.ReadLine();
                     Console.WriteLine();
 
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    string PlayerGameStart = "The game begins!";
-                    for (int i = 0; i < PlayerGameStart.Length; i++)
-                    {
-                        Console.Write(PlayerGameStart[i]);
-                        System.Threading.
-                        Thread.Sleep(50);
-                    }
                 }
                 else 
                 {
                     Console.Clear();
                     TitleScreen.Introduction();
-                    string PlayerGameStart = "The game begins!";
-                    for (int i = 0; i < PlayerGameStart.Length; i++)
-                    {
-                        Console.Write(PlayerGameStart[i]);
-                        System.Threading.
-                        Thread.Sleep(50);
-                    }
+
                 }
             }
            
