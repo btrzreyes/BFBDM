@@ -12,19 +12,21 @@
  * 12-Ogilvie, Group MBK
  * 
  */
+
 using System;
 
 namespace _MBK
 {
-   
+
     public static class TitleScreen
     {
+        public static string PlayerOne, PlayerTwo; // allows the user input for Player 1 and Player 2 be read in other classes
         public static void TitleASCII()
         {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Yellow; // Yellow for any computer-generated text
             Console.Clear();
-            Console.Title = "Battle for Bajo de Masinloc";
+            Console.Title = "BATTLE FOR BAJO DE MASINLOC"; // The title at the top part of the dialog box when the application runs
             Console.WriteLine(@"                       _______  _______  _______  _______  ___      _______                  _______  _______  ______                        
                       |  _    ||   _   ||       ||       ||   |    |       |                |       ||       ||    _ |                       
                       | |_|   ||  |_|  ||_     _||_     _||   |    |    ___|                |    ___||   _   ||   | ||                       
@@ -45,7 +47,9 @@ namespace _MBK
 
         public static void Introduction()
         {
+
             Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Title = "Introduction and Player Creation";
             int PlayerDecision;
             string IntroductionText = @"Welcome to the game BATTLE FOR BAJO DE MASINLOC. 
 Two players are required to play this game. 
@@ -65,6 +69,7 @@ Input the number of your choice:
             Console.ForegroundColor = ConsoleColor.Red; // Red for giving choices
             Console.WriteLine("[1. YES/ 2. NO]");
             Console.ForegroundColor = ConsoleColor.White; // White for letting the player choose his/ her own choice
+
             PlayerDecision = int.Parse(Console.ReadLine()); // will ask for the Player names 
 
             if (PlayerDecision == 1)
@@ -79,7 +84,7 @@ Input the number of your choice:
                 }
 
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.ReadLine();
+                PlayerOne = Console.ReadLine();
 
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 string PlayerTwoName = "What is Player 2's name? ";
@@ -91,7 +96,7 @@ Input the number of your choice:
                 }
 
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.ReadLine();
+                PlayerTwo = Console.ReadLine();
                 Console.WriteLine();
 
             }
@@ -111,7 +116,7 @@ Input the number of your choice:
 
                 Console.ForegroundColor = ConsoleColor.White;
                 PlayerNameFinalDecision = int.Parse(Console.ReadLine());
-                if (PlayerNameFinalDecision == 1) 
+                if (PlayerNameFinalDecision == 1)
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     string PlayerOneName = "What is Player 1's name? ";
@@ -123,7 +128,7 @@ Input the number of your choice:
                     }
 
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.ReadLine();
+                    PlayerOne = Console.ReadLine();
 
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     string PlayerTwoName = "What is Player 2's name? ";
@@ -138,26 +143,141 @@ Input the number of your choice:
                     Console.WriteLine();
 
                 }
-                else 
+                else
                 {
                     Console.Clear();
                     TitleScreen.Introduction();
 
                 }
             }
-           
+
+
+        }
+    }
+
+    public static class MainStory
+    {
+        public static void MeetTheLeaders()
+        {
+            int PlayerDecision;
+            Console.Clear();
+            Console.Title = "Meet the Leaders";
+            Console.ForegroundColor = ConsoleColor.Yellow; // Reverts back to the base game color Yellow
+
+            string MeetLeadersIntro = "Welcome to the game, " + TitleScreen.PlayerOne + " and " + TitleScreen.PlayerTwo + "! \nThese two characters that you must choose are as follows.";
+            for (int i = 0; i < MeetLeadersIntro.Length; i++)
+            {
+                Console.Write(MeetLeadersIntro[i]);
+                System.Threading.
+                Thread.Sleep(50);
+            }
+
+            Console.ReadLine();
+            Console.Clear();
+
+            Console.Title = "Meet Ogirdor";
+            Console.WriteLine(@"                                                                                              
+        _____          _____     ____      _____        _____           _____         _____   
+   ____|\    \     ___|\    \   |    | ___|\    \   ___|\    \     ____|\    \    ___|\    \  
+  /     /\    \   /    /\    \  |    ||    |\    \ |    |\    \   /     /\    \  |    |\    \ 
+ /     /  \    \ |    |  |____| |    ||    | |    ||    | |    | /     /  \    \ |    | |    |
+|     |    |    ||    |    ____ |    ||    |/____/ |    | |    ||     |    |    ||    |/____/ 
+|     |    |    ||    |   |    ||    ||    |\    \ |    | |    ||     |    |    ||    |\    \ 
+|\     \  /    /||    |   |_,  ||    ||    | |    ||    | |    ||\     \  /    /||    | |    |
+| \_____\/____/ ||\ ___\___/  /||____||____| |____||____|/____/|| \_____\/____/ ||____| |____|
+ \ |    ||    | /| |   /____ / ||    ||    | |    ||    /    | | \ |    ||    | /|    | |    |
+  \|____||____|/  \|___|    | / |____||____| |____||____|____|/   \|____||____|/ |____| |____|
+     \(    )/       \( |____|/    \(    \(     )/    \(    )/        \(    )/      \(     )/  
+      '    '         '   )/        '     '     '      '    '          '    '        '     ' ");
+
+            string OgirdorIntro = "insert text of Ogirdor here, based on the Story Flow";
+            for (int i = 0; i < OgirdorIntro.Length; i++)
+            {
+                Console.Write(OgirdorIntro[i]);
+                System.Threading.
+                Thread.Sleep(50);
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Press enter to view the next character.");
+            Console.ReadLine();
+            Console.Clear();
+
+            Console.Title = "Meet Chinping";
+            Console.WriteLine(@"                                                                               ______                                                         
+        _____         __     __         ____________  _____    _____     _____|\     \   ____________  _____    _____            _____        
+   _____\    \_      /  \   /  \       /            \|\    \   \    \   /     / |     | /            \|\    \   \    \      _____\    \_      
+  /     /|     |    /   /| |\   \     |\___/\  \\___/|\\    \   |    | |      |/     /||\___/\  \\___/|\\    \   |    |    /     /|     |     
+ /     / /____/|   /   //   \\   \     \|____\  \___|/ \\    \  |    | |      |\____/ | \|____\  \___|/ \\    \  |    |   /     / /____/|     
+|     | |____|/   /    \_____/    \          |  |       \|    \ |    | |\     \    | /        |  |       \|    \ |    |  |     | |_____|/     
+|     |  _____   /    /\_____/\    \    __  /   / __     |     \|    | | \     \___|/    __  /   / __     |     \|    |  |     | |_________   
+|\     \|\    \ /    //\_____/\\    \  /  \/   /_/  |   /     /\      \|  \     \       /  \/   /_/  |   /     /\      \ |\     \|\        \  
+| \_____\|    |/____/ |       | \____\|____________/|  /_____/ /______/|\  \_____\     |____________/|  /_____/ /______/|| \_____\|    |\__/| 
+| |     /____/||    | |       | |    ||           | / |      | |     | | \ |     |     |           | / |      | |     | || |     /____/| | || 
+ \|_____|    |||____|/         \|____||___________|/  |______|/|_____|/   \|_____|     |___________|/  |______|/|_____|/  \|_____|     |\|_|/ 
+        |____|/                                                                                                                  |____/       ");
+            
+            string ChinpingIntro = "insert text of Chinping here, based on the Story Flow";
+            for (int i = 0; i < ChinpingIntro.Length; i++)
+            {
+                Console.Write(ChinpingIntro[i]);
+                System.Threading.
+                Thread.Sleep(50);
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Press enter to continue to the story.");
+            Console.ReadLine();
+            Console.Clear();
+
+            string NumericalValuesPrompt = "Would you like to see the numerical values of the attacks and items?";
+            for (int i = 0; i < NumericalValuesPrompt.Length; i++)
+            {
+                Console.Write(NumericalValuesPrompt[i]);
+                System.Threading.
+                Thread.Sleep(50);
+            }
+
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Red; // Red for giving choices
+            Console.WriteLine("[1. YES/ 2. NO]");
+            Console.ForegroundColor = ConsoleColor.White; // White for letting the player choose his/ her own choice
+
+            PlayerDecision = int.Parse(Console.ReadLine()); // will ask for the Player choice
+
+            if (PlayerDecision == 1 )
+            {
+                MainStory.LeaderStats();
+            }
+            else if (PlayerDecision == 2)
+            {
+                MainStory.PlayerChoose();
+            }
 
         }
 
-    }
-    class Program
-    {
-        
-        static void Main()
+        public static void LeaderStats()
         {
-            TitleScreen.TitleASCII();
-            TitleScreen.Introduction();
-            Console.ReadKey();
+            Console.Clear();
+            Console.WriteLine("Leader Stats");
+        }
+
+        public static void PlayerChoose()
+        {
+            Console.Clear();
+            Console.WriteLine("Player Choose");
+        }
+
+        class Program
+        {
+
+            static void Main()
+            {
+                TitleScreen.TitleASCII();
+                TitleScreen.Introduction();
+                MainStory.MeetTheLeaders();
+                Console.ReadKey();
+            }
         }
     }
 }
