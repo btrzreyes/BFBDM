@@ -21,6 +21,7 @@ namespace _MBK
     public static class TitleScreen
     {
         public static string PlayerOne, PlayerTwo; // allows the user input for Player 1 and Player 2 be read in other classes
+        public static int PlayerDecision;
         public static void TitleASCII()
         {
             Console.BackgroundColor = ConsoleColor.Black;
@@ -50,7 +51,6 @@ namespace _MBK
 
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Title = "Introduction and Player Creation";
-            int PlayerDecision;
             string IntroductionText = @"Welcome to the game BATTLE FOR BAJO DE MASINLOC. 
 Two players are required to play this game. 
 Please decide which player shall be Player 1 and Player 2. 
@@ -216,7 +216,7 @@ Input the number of your choice:
 | |     /____/||    | |       | |    ||           | / |      | |     | | \ |     |     |           | / |      | |     | || |     /____/| | || 
  \|_____|    |||____|/         \|____||___________|/  |______|/|_____|/   \|_____|     |___________|/  |______|/|_____|/  \|_____|     |\|_|/ 
         |____|/                                                                                                                  |____/       ");
-            
+
             string ChinpingIntro = "insert text of Chinping here, based on the Story Flow";
             for (int i = 0; i < ChinpingIntro.Length; i++)
             {
@@ -245,7 +245,7 @@ Input the number of your choice:
 
             PlayerDecision = int.Parse(Console.ReadLine()); // will ask for the Player choice
 
-            if (PlayerDecision == 1 )
+            if (PlayerDecision == 1)
             {
                 MainStory.LeaderStats();
             }
@@ -264,8 +264,25 @@ Input the number of your choice:
 
         public static void PlayerChoose()
         {
+            int Player1Char;
+
             Console.Clear();
-            Console.WriteLine("Player Choose");
+            Console.WriteLine(TitleScreen.PlayerOne + ", choose your character.");
+            Console.WriteLine("[1] Ogirdor \n\n [2] Chinping");
+            Player1Char = int.Parse(Console.ReadLine());
+
+            if (Player1Char == 1)
+            {
+                Console.WriteLine(TitleScreen.PlayerOne + " chose OGIRDOR!");
+                Console.WriteLine(TitleScreen.PlayerTwo + " is left with CHINPING!");
+            }
+
+            else if (Player1Char == 2)
+            {
+                Console.WriteLine(TitleScreen.PlayerOne + " chose CHINPING!");
+                Console.WriteLine(TitleScreen.PlayerTwo + " is left with OGIRDOR!");
+            }
+            
         }
 
         class Program
@@ -276,6 +293,15 @@ Input the number of your choice:
                 TitleScreen.TitleASCII();
                 TitleScreen.Introduction();
                 MainStory.MeetTheLeaders();
+                MainStory.PlayerChoose();
+                if (TitleScreen.PlayerDecision == 1)
+                {
+                    MainStory.PlayerOneOgirdor();
+                }
+                else if (TitleScreen.PlayerDecision == 2)
+                {
+                    MainStory.PlayerTwoOgirdor();
+                }
                 Console.ReadKey();
             }
         }
